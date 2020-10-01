@@ -126,14 +126,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/dashboard" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Invoices\app\Http\Controllers\Dashboard" />
       <recent name="C:\wamp64\www\Invoices\app\Models" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Invoices\resources\views\dashboard" />
+      <recent name="C:\wamp64\www\Invoices\resources\views\ invoices" />
       <recent name="C:\wamp64\www\Invoices\app\Http\Controllers" />
     </key>
   </component>
@@ -151,11 +154,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601562200757</updated>
-      <workItem from="1601562202081" duration="4209000" />
+      <workItem from="1601562202081" duration="11554000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="532" y="278" key="Create Controller" timestamp="1601566745076">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="532" y="278" key="Create Controller/0.0.1366.738@0.0.1366.738" timestamp="1601566745076" />
   </component>
 </project>
