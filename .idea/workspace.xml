@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c58c7aa1-ac05-4dd1-8f8e-80df606e4319" name="Default Changelist" comment="" />
+    <list default="true" id="c58c7aa1-ac05-4dd1-8f8e-80df606e4319" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Invoices.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Invoices.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/SectionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/SectionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Section.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Section.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_01_173707_create_sections_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_01_173707_create_sections_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css-rtl/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css-rtl/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/plugins/datatable/js/jquery.dataTables.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/plugins/datatable/js/jquery.dataTables.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/invoices/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/invoices/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/head.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/main-sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main-sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -116,6 +136,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
       <path value="$PROJECT_DIR$/vendor/psr/http-message" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/realrashid/sweet-alert" />
     </include_path>
   </component>
   <component name="ProjectId" id="1iHQmurfwC8gZ2Rx07DvkTr8MXC" />
@@ -126,15 +147,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/dashboard" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/dashboard/sections" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Invoices\app\Http\Requests\Dashboard" />
       <recent name="C:\wamp64\www\Invoices\app\Http\Controllers\Dashboard" />
       <recent name="C:\wamp64\www\Invoices\app\Models" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Invoices\resources\views\dashboard\sections" />
       <recent name="C:\wamp64\www\Invoices\resources\views\dashboard" />
       <recent name="C:\wamp64\www\Invoices\resources\views\ invoices" />
       <recent name="C:\wamp64\www\Invoices\app\Http\Controllers" />
@@ -154,7 +177,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601562200757</updated>
-      <workItem from="1601562202081" duration="11554000" />
+      <workItem from="1601562202081" duration="27716000" />
+      <workItem from="1601624664230" duration="4469000" />
     </task>
     <servers />
   </component>
@@ -162,9 +186,13 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="532" y="278" key="Create Controller" timestamp="1601566745076">
+    <state x="532" y="278" key="Create Controller" timestamp="1601573846955">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="532" y="278" key="Create Controller/0.0.1366.738@0.0.1366.738" timestamp="1601566745076" />
+    <state x="532" y="278" key="Create Controller/0.0.1366.738@0.0.1366.738" timestamp="1601573846955" />
+    <state x="543" y="278" key="Create Form Request" timestamp="1601579538393">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="543" y="278" key="Create Form Request/0.0.1366.738@0.0.1366.738" timestamp="1601579538393" />
   </component>
 </project>
