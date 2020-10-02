@@ -5,6 +5,7 @@
 @section('css')
     <!-- Internal Data table css -->
     <link href="{{URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet"/>
+    <link href="{{URL::asset('assets/plugins/select2/css/select2.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('assets/plugins/datatable/css/buttons.bootstrap4.min.css')}}" rel="stylesheet">
     <link href="{{URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css')}}" rel="stylesheet"/>
     <link href="{{URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css')}}" rel="stylesheet">
@@ -16,13 +17,14 @@
     <div class="breadcrumb-header justify-content-between">
         <div class="my-auto">
             <div class="d-flex">
-                <h4 class="content-title mb-0 my-auto">الاعدادات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0"> / الاقسام ( {{\App\Models\Section::count()}} )</span>
+                <h4 class="content-title mb-0 my-auto">الاعدادات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0"> / المنتجات ( {{\App\Models\Product::count()}} )</span>
             </div>
         </div>
     </div>
     <!-- breadcrumb -->
 @stop
 @section('content')
+
     <!-- row -->
     <div class="row">
         <!--div-->
@@ -31,7 +33,7 @@
                 <div class="card-header pb-0">
                     <div class="d-flex justify-content-between">
                         <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale"
-                           data-toggle="modal" href="#modaldemo8">اضافة قسم</a>
+                           data-toggle="modal" href="#modaldemo8">اضافة منتج</a>
                         <!-- Start Modal Add  -->
                         <div class="modal" id="modaldemo8">
                             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -42,12 +44,27 @@
                                             <span aria-hidden="true">&times;</span></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="{{route('sections.store')}}" method="post">
+                                        <form action="{{route('products.store')}}" method="post">
                                             @csrf
                                             <div class="form-group">
-                                                <label for="name">اسم القسم</label>
+                                                <label for="name">اسم المنتج</label>
                                                 <input type="text" class="form-control" id="name" name="name" required>
                                             </div>
+                                            <div class="form-group">
+                                                <p class="mg-b-10">اسم القسم</p>
+                                                <select class="form-control select2" name="section_id">
+                                                    <option label="Choose one">
+                                                    </option>
+                                                    @forelse($sections as $section)
+                                                        <option value="{{$section->id}}">
+                                                            {{$section->name}}
+                                                            @empty
+                                                                --
+                                                        </option>
+                                                    @endforelse
+                                                </select>
+                                            </div>
+
                                             <div class="form-group">
                                                 <label for="name">الملاحظات ( اختياري )</label>
                                                 <textarea type="text" rows="3" class="form-control" id="description"
@@ -76,6 +93,7 @@
                             <thead>
                             <tr>
                                 <th class="border-bottom-0">#</th>
+                                <th class="border-bottom-0">اسم المنتج</th>
                                 <th class="border-bottom-0">اسم القسم</th>
                                 <th class="border-bottom-0">الوصف</th>
                                 <th class="border-bottom-0">تم الانشاء بواسطة</th>
@@ -83,45 +101,61 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @forelse($sections as $index=>$section)
+                            @forelse($products as $index=>$product)
                                 <tr>
                                     <td>{{$index + 1}}</td>
-                                    <td>{{$section->name}}</td>
-                                    <td>{{$section->description ?? '--'}}</td>
-                                    <td>{{$section->created_by}}</td>
+                                    <td>{{$product->name}}</td>
+                                    <td>{{$product->section->name}}</td>
+                                    <td>{{$product->description ?? '--'}}</td>
+                                    <td>{{$product->created_by}}</td>
                                     <td>
                                         <!-- Start Modal Edit -->
                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
-                                           data-toggle="modal" href="#exampleModalCenter{{$section->id}}">
+                                           data-toggle="modal" href="#exampleModalCenter{{$product->id}}">
                                             <i class="las la-pen m-1"></i>تعديل
                                         </a>
-                                        <div class="modal fade" id="exampleModalCenter{{$section->id}}" tabindex="-1"
+                                        <div class="modal fade" id="exampleModalCenter{{$product->id}}" tabindex="-1"
                                              role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle"> تعديل قسم {{$section->name}}</h5>
+                                                        <h5 class="modal-title" id="exampleModalLongTitle"> تعديل
+                                                            منتج {{$product->name}}</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{route('sections.update', $section->id)}}"
+                                                        <form action="{{route('products.update', $product->id)}}"
                                                               method="post">
                                                             @csrf
                                                             @method('PUT')
                                                             <div class="form-group">
-                                                                <label for="name">اسم القسم</label>
+                                                                <label for="name">اسم المنتج</label>
                                                                 <input type="text" class="form-control"
-                                                                       value="{{$section->name}}" id="name" name="name"
+                                                                       value="{{$product->name}}" id="name" name="name"
                                                                        required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p class="mg-b-10">اسم القسم</p>
+                                                                <select class="form-control select2" name="section_id" required>
+                                                                    <option label="Choose one">
+                                                                    </option>
+                                                                    @forelse($sections as $section)
+                                                                        <option value="{{$section->id}}" @if ($section->id == $product->section->id) selected @endif>
+                                                                            {{$section->name}}
+                                                                            @empty
+                                                                                --
+                                                                        </option>
+                                                                    @endforelse
+                                                                </select>
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="name">الملاحظات ( اختياري )</label>
                                                                 <textarea type="text" rows="3" class="form-control"
                                                                           id="description"
-                                                                          name="description">{{$section->description}}</textarea>
+                                                                          name="description">{{$product->description}}</textarea>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button class="btn ripple btn-secondary"
@@ -141,16 +175,15 @@
 
                                         <!-- Start Modal Delete -->
                                         <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                           data-toggle="modal" href="#modaldemo9{{$section->id}}" title="حذف">
+                                           data-toggle="modal" href="#modaldemo9{{$product->id}}" title="حذف">
                                             <i class="las la-trash m-1"></i>حذف
                                         </a>
-                                        <div class="modal fade" id="modaldemo9{{$section->id}}" tabindex="-1"
+                                        <div class="modal fade" id="modaldemo9{{$product->id}}" tabindex="-1"
                                              role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                             <div class="modal-dialog modal-dialog-centered" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle">Modal
-                                                            title</h5>
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">حذف منتج ( {{$product->name}} )</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -159,7 +192,7 @@
                                                     <div class="modal-body">
                                                         <p style="text-align: right">هل انت متاكد من الحذف ؟؟</p>
                                                     </div>
-                                                        <form action="{{route('sections.destroy', $section->id)}}"
+                                                        <form action="{{route('products.destroy', $product->id)}}"
                                                               method="post">
                                                             @csrf
                                                             @method('DELETE')
@@ -172,6 +205,7 @@
                                                                 </button>
                                                             </div>
                                                         </form>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -217,5 +251,23 @@
     <!--Internal  Datatable js -->
     <script src="{{URL::asset('assets/js/table-data.js')}}"></script>
     <script src="{{URL::asset('assets/js/modal.js')}}"></script>
+
+    <!--Internal  Datepicker js -->
+    <script src="{{URL::asset('assets/plugins/jquery-ui/ui/widgets/datepicker.js')}}"></script>
+    <!--Internal  jquery.maskedinput js -->
+    <script src="{{URL::asset('assets/plugins/jquery.maskedinput/jquery.maskedinput.js')}}"></script>
+    <!--Internal  spectrum-colorpicker js -->
+    <script src="{{URL::asset('assets/plugins/spectrum-colorpicker/spectrum.js')}}"></script>
+    <!-- Internal Select2.min js -->
     <script src="{{URL::asset('assets/plugins/select2/js/select2.min.js')}}"></script>
+    <!--Internal Ion.rangeSlider.min js -->
+    <script src="{{URL::asset('assets/plugins/ion-rangeslider/js/ion.rangeSlider.min.js')}}"></script>
+    <!--Internal  jquery-simple-datetimepicker js -->
+    <script src="{{URL::asset('assets/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js')}}"></script>
+    <!-- Ionicons js -->
+    <script src="{{URL::asset('assets/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.js')}}"></script>
+    <!--Internal  pickerjs js -->
+    <script src="{{URL::asset('assets/plugins/pickerjs/picker.min.js')}}"></script>
+    <!-- Internal form-elements js -->
+    <script src="{{URL::asset('assets/js/form-elements.js')}}"></script>
 @endsection

@@ -5,13 +5,12 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SectionRequest;
 use App\Models\Section;
-use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
     public function index()
     {
-        $sections = Section::orderBy('id', 'desc')->get();
+        $sections = Section::selection()->orderBy('id', 'desc')->get();
         return view('dashboard.sections.index', compact('sections'));
     }
 
@@ -43,7 +42,6 @@ class SectionController extends Controller
         }
     }
 
-
     public function update(SectionRequest $request, $id)
     {
         $section = Section::find($id);
@@ -58,6 +56,15 @@ class SectionController extends Controller
     public function destroy($id)
     {
         $section = Section::find($id);
+        if (!$section) {
+            toast('حدث خطا ما حاول مرة اخري', 'error');
+            return redirect()->route('sections.index');
+        }
+        $products = $section->products();
+        if (isset($products) && $products->count() > 0 ) {
+            toast('عفوا لا يمكن حذف هذا القسم', 'error');
+            return redirect()->route('sections.index');
+        }
         $section->delete();
         toast('تم الحذف بنجاح', 'success');
         return redirect()->route('sections.index');
