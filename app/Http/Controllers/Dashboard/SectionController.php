@@ -10,7 +10,7 @@ class SectionController extends Controller
 {
     public function index()
     {
-        $sections = Section::selection()->orderBy('id', 'desc')->get();
+        $sections = Section::select('id', 'name', 'description', 'created_by')->orderBy('id', 'desc')->get();
         return view('dashboard.sections.index', compact('sections'));
     }
 

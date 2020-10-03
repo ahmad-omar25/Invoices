@@ -17,6 +17,9 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => 'auth'], function () {
     // Sections Routes
     Route::resource('sections', 'SectionController');
 
+    // Get Section of Products
+    Route::get('/section/{id}', 'InvoiceController@getProducts');
+
     // Products Routes
     Route::resource('products', 'ProductController');
 
