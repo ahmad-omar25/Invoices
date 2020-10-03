@@ -19,15 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c58c7aa1-ac05-4dd1-8f8e-80df606e4319" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/invoices/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/InvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/InvoiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/SectionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/SectionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/invoices/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/invoices/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-    </list>
+    <list default="true" id="c58c7aa1-ac05-4dd1-8f8e-80df606e4319" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -165,17 +157,17 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Invoices\app\Http\Requests\Dashboard" />
+      <recent name="C:\wamp64\www\Invoices\app\Http\Controllers\Dashboard" />
+      <recent name="C:\wamp64\www\Invoices\app\Models" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\Invoices\resources\views\dashboard\invoices" />
       <recent name="C:\wamp64\www\Invoices\resources\views\dashboard" />
       <recent name="C:\wamp64\www\Invoices\resources\views\dashboard\sections" />
       <recent name="C:\wamp64\www\Invoices\resources\views\ invoices" />
       <recent name="C:\wamp64\www\Invoices\app\Http\Controllers" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\Invoices\app\Http\Requests\Dashboard" />
-      <recent name="C:\wamp64\www\Invoices\app\Http\Controllers\Dashboard" />
-      <recent name="C:\wamp64\www\Invoices\app\Models" />
     </key>
   </component>
   <component name="RunManager">
