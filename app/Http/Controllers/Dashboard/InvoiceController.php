@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\InvoiceRequest;
 use App\Models\Invoice;
 use App\Models\InvoiceDetails;
 use App\Models\Product;
@@ -31,7 +32,7 @@ class InvoiceController extends Controller
         return json_encode($products);
     }
 
-    public function store(Request $request)
+    public function store(InvoiceRequest $request)
     {
         Invoice::create([
             'invoice_number' => $request->input('invoice_number'),
@@ -49,7 +50,6 @@ class InvoiceController extends Controller
             'value_status' => '2',
             'note' => $request->input('note'),
             'created_by' => auth()->user()->name,
-            'payment_date' => '2020-10-10',
         ]);
 
         $invoiceId = Invoice::latest()->first()->id;
@@ -58,20 +58,22 @@ class InvoiceController extends Controller
             'invoice_id' => $invoiceId,
             'invoice_number' => $request->input('invoice_number'),
             'product' => $request->input('product'),
-            'section' => $request->input('section'),
+            'section_id' => $request->input('section'),
             'status' => 'غير مدفوعة',
             'value_status' => '2',
             'note' => $request->input('note'),
             'created_by' => auth()->user()->name,
+            'payment_date' => '2020-10-10',
         ]);
 
         toast('تم الاضافة بنجاح', 'success');
         return redirect()->route('invoices.index');
     }
 
-    public function show($id)
+    public function edit($id)
     {
-        $invoices = Invoice::findOrFail($id);
-        return view('dashboard.invoices.show', compact('invoices'));
+        $invoice = Invoice::findOrFail($id)->first();
+        $details = InvoiceDetails::where('invoice_id', $id)->get();
+        return view('dashboard.invoices.show', compact('invoice', 'details'));
     }
 }

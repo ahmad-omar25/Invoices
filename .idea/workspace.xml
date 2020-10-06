@@ -20,20 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c58c7aa1-ac05-4dd1-8f8e-80df606e4319" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/InvoiceRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/InvoiceAttachment.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/InvoiceDetails.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_03_135549_create_invoice_details_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_03_140637_create_invoice_attachments_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/invoices/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/InvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/InvoiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Invoice.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/InvoiceRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/InvoiceRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/InvoiceDetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/InvoiceDetails.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_01_153404_create_invoices_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_01_153404_create_invoices_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_03_135549_create_invoice_details_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_03_135549_create_invoice_details_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/invoices/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/invoices/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/invoices/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/invoices/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/invoices/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/invoices/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/main-sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main-sidebar.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

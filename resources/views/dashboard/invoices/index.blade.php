@@ -63,7 +63,7 @@
                                         <td>{{$invoice->due_date}}</td>
                                         <td>{{$invoice->product}}</td>
                                         <td>
-                                            <a href="{{route('invoices.show', $invoice->id)}}">{{$invoice->section->name}}</a>
+                                            <a href="{{route('invoices.edit', $invoice->id)}}">{{$invoice->section->name}}</a>
                                         </td>
                                         <td>{{$invoice->discount}}</td>
                                         <td>{{$invoice->rate_vat}}</td>
@@ -78,7 +78,7 @@
                                                 <span class="badge badge-pill badge-warning">{{$invoice->status}}</span>
                                             @endif
                                         </td>
-                                        <td>{{$invoice->note}}</td>
+                                        <td>{{$invoice->note ?? '--'}}</td>
                                     </tr>
                                 @empty
                                     --
@@ -97,6 +97,7 @@
     <!-- Container closed -->
     </div>
     <!-- main-content closed -->
+    @include('sweetalert::alert')
 @stop
 @section('js')
     <!-- Internal Data tables -->

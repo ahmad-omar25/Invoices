@@ -13,7 +13,6 @@ class InvoiceRequest extends FormRequest
             'invoice_date' => 'required',
             'due_date' => 'required',
             'product' => 'required',
-            'section_id' => 'required',
             'amount_collection' => 'required',
             'amount_commission' => 'required',
             'rate_vat' => 'required',

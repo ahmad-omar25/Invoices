@@ -68,54 +68,54 @@
                                                     <tbody>
                                                     <tr>
                                                         <th scope="row">رقم الفاتورة</th>
-                                                        <td>{{ $invoices->invoice_number }}</td>
+                                                        <td>{{ $invoice->invoice_number }}</td>
                                                         <th scope="row">تاريخ الاصدار</th>
-                                                        <td>{{ $invoices->invoice_date }}</td>
+                                                        <td>{{ $invoice->invoice_date }}</td>
                                                         <th scope="row">تاريخ الاستحقاق</th>
-                                                        <td>{{ $invoices->due_date }}</td>
+                                                        <td>{{ $invoice->due_date }}</td>
                                                         <th scope="row">القسم</th>
-                                                        <td>{{ $invoices->section->name }}</td>
+                                                        <td>{{ $invoice->section->name }}</td>
                                                     </tr>
 
                                                     <tr>
                                                         <th scope="row">المنتج</th>
-                                                        <td>{{ $invoices->product }}</td>
+                                                        <td>{{ $invoice->product }}</td>
                                                         <th scope="row">مبلغ التحصيل</th>
-                                                        <td>{{ $invoices->amount_collection }}</td>
+                                                        <td>{{ $invoice->amount_collection }}</td>
                                                         <th scope="row">مبلغ العمولة</th>
-                                                        <td>{{ $invoices->amount_commission }}</td>
+                                                        <td>{{ $invoice->amount_commission }}</td>
                                                         <th scope="row">الخصم</th>
-                                                        <td>{{ $invoices->discount }}</td>
+                                                        <td>{{ $invoice->discount }}</td>
                                                     </tr>
 
 
                                                     <tr>
                                                         <th scope="row">نسبة الضريبة</th>
-                                                        <td>{{ $invoices->rate_vat }}</td>
+                                                        <td>{{ $invoice->rate_vat }}</td>
                                                         <th scope="row">قيمة الضريبة</th>
-                                                        <td>{{ $invoices->value_vat }}</td>
+                                                        <td>{{ $invoice->value_vat }}</td>
                                                         <th scope="row">الاجمالي مع الضريبة</th>
-                                                        <td>{{ $invoices->total }}</td>
+                                                        <td>{{ $invoice->total }}</td>
                                                         <th scope="row">الحالة الحالية</th>
 
-                                                        @if ($invoices->value_status == 1)
+                                                        @if ($invoice->value_status == 1)
                                                             <td><span
-                                                                    class="badge badge-pill badge-success">{{ $invoices->status }}</span>
+                                                                    class="badge badge-pill badge-success">{{ $invoice->status }}</span>
                                                             </td>
-                                                        @elseif($invoices->Value_status ==2)
+                                                        @elseif($invoice->value_status == 2)
                                                             <td><span
-                                                                    class="badge badge-pill badge-danger">{{ $invoices->status }}</span>
+                                                                    class="badge badge-pill badge-danger">{{ $invoice->status }}</span>
                                                             </td>
                                                         @else
                                                             <td><span
-                                                                    class="badge badge-pill badge-warning">{{ $invoices->status }}</span>
+                                                                    class="badge badge-pill badge-warning">{{ $invoice->status }}</span>
                                                             </td>
                                                         @endif
                                                     </tr>
 
                                                     <tr>
                                                         <th scope="row">ملاحظات</th>
-                                                        <td>{{ $invoices->note }}</td>
+                                                        <td>{{ $invoice->note ?? '--' }}</td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -141,7 +141,29 @@
                                                     </tr>
                                                     </thead>
                                                     <tbody>
-
+                                                    @forelse($details as $index=>$detail)
+                                                        <tr>
+                                                            <td>{{$index + 1}}</td>
+                                                            <td>{{$detail->invoice_number}}</td>
+                                                            <td>{{$detail->product}}</td>
+                                                            <td>{{$detail->section->name}}</td>
+                                                            <td>
+                                                                @if ($detail->value_status == 1)
+                                                                    <span class="badge badge-pill badge-success">{{$detail->status}}</span>
+                                                                @elseif($detail->value_status == 2)
+                                                                    <span class="badge badge-pill badge-danger">{{$detail->status}}</span>
+                                                                @else
+                                                                    <span class="badge badge-pill badge-warning">{{$detail->status}}</span>
+                                                                @endif
+                                                            </td>
+                                                            <td>{{ $detail->payment_date }}</td>
+                                                            <td>{{ $detail->note ?? '--' }}</td>
+                                                            <td>{{ $detail->created_at->format('Y-d-m') }}</td>
+                                                            <td>{{ $detail->created_by }}</td>
+                                                        </tr>
+                                                    @empty
+                                                    --
+                                                    @endforelse
                                                     </tbody>
                                                 </table>
 

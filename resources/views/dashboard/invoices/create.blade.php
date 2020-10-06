@@ -43,25 +43,40 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    @php $input = 'invoice_number' @endphp
                                     <label for="inputName" class="control-label">رقم الفاتورة</label>
-                                    <input type="text" class="form-control" id="inputName" name="invoice_number" value="{{old('invoice_number')}}"
-                                           title="يرجي ادخال رقم الفاتورة" required>
+                                    <input type="text" class="form-control @error($input) is-invalid @enderror" id="inputName" name="{{$input}}" value="{{old($input)}}" title="يرجي ادخال رقم الفاتورة">
+                                    @error($input)
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    @php $input = 'invoice_date' @endphp
                                     <label>تاريخ الفاتورة</label>
-                                    <input class="form-control fc-datepicker" name="invoice_date"
-                                           placeholder="YYYY-MM-DD" type="text" required>
+                                    <input class="form-control fc-datepicker @error($input) is-invalid @enderror" name="invoice_date" value="{{old($input)}}" placeholder="YYYY-MM-DD" type="text" >
+                                    @error($input)
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    @php $input = 'due_date' @endphp
                                     <label>تاريخ الاستحقاق</label>
-                                    <input class="form-control fc-datepicker" name="due_date" placeholder="YYYY-MM-DD"
-                                           type="text" required>
+                                    <input class="form-control fc-datepicker @error($input) is-invalid @enderror" name="due_date" value="{{old($input)}}" placeholder="YYYY-MM-DD" type="text" >
+                                    @error($input)
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -85,16 +100,27 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    @php $input = 'product' @endphp
                                     <label for="inputName" class="control-label">المنتج</label>
-                                    <select id="product" name="product" class="form-control"></select>
+                                    <select id="product" name="product" class="form-control @error($input) is-invalid @enderror"></select>
+                                    @error($input)
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    @php $input = 'amount_collection' @endphp
                                     <label for="inputName" class="control-label">مبلغ التحصيل</label>
-                                    <input type="text" class="form-control" id="inputName" name="amount_collection"
-                                           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                    <input type="text" class="form-control @error($input) is-invalid @enderror" value="{{old($input)}}" id="inputName" name="amount_collection" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                    @error($input)
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -103,30 +129,29 @@
 
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    @php $input = 'amount_commission' @endphp
                                     <label for="inputName" class="control-label">مبلغ العمولة</label>
-                                    <input type="text" class="form-control form-control-lg" id="Amount_Commission"
-                                           name="amount_commission" title="يرجي ادخال مبلغ العمولة "
-                                           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                           required>
+                                    <input type="text" class="form-control form-control-lg @error($input) is-invalid @enderror" value="{{old($input)}}" id="Amount_Commission" name="amount_commission" title="يرجي ادخال مبلغ العمولة " oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                    @error($input)
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="inputName" class="control-label">الخصم</label>
-                                    <input type="text" class="form-control form-control-lg" id="discount"
-                                           name="discount"
-                                           title="يرجي ادخال مبلغ الخصم "
-                                           oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                                           value=0 required>
+                                    <input type="text" class="form-control form-control-lg" id="discount" value="{{old('discount')}}" name="discount" title="يرجي ادخال مبلغ الخصم " oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" value=0 >
                                 </div>
                             </div>
 
-
                             <div class="col-md-4">
                                 <div class="form-group">
+                                    @php $input = 'rate_vat' @endphp
                                     <label for="inputName" class="control-label">نسبة ضريبة القيمة المضافة</label>
-                                    <select name="rate_vat" id="rate_vat" class="form-control" onchange="myFunction()">
+                                    <select name="rate_vat" id="rate_vat" class="form-control @error($input) is-invalid @enderror" onchange="myFunction()">
                                         <!--placeholder-->
                                         <option value="" selected disabled>حدد نسبة الضريبة</option>
                                         <option value="5%">5%</option>
@@ -134,6 +159,11 @@
                                         <option value="15%">15%</option>
                                         <option value="20%">20%</option>
                                     </select>
+                                    @error($input)
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
 
