@@ -46,6 +46,7 @@
                                     <th class="border-bottom-0">تاريخ الاستحقاق</th>
                                     <th class="border-bottom-0">المنتج</th>
                                     <th class="border-bottom-0">القسم</th>
+                                    <th class="border-bottom-0">الخصم</th>
                                     <th class="border-bottom-0">نسبة الضريبة</th>
                                     <th class="border-bottom-0">قيمة الضريبة</th>
                                     <th class="border-bottom-0">الاجمالي</th>
@@ -54,19 +55,35 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                </tr>
+                                @forelse($invoices as $index=>$invoice)
+                                    <tr>
+                                        <td>{{$index +1}}</td>
+                                        <td>{{$invoice->invoice_number}}</td>
+                                        <td>{{$invoice->invoice_date}}</td>
+                                        <td>{{$invoice->due_date}}</td>
+                                        <td>{{$invoice->product}}</td>
+                                        <td>
+                                            <a href="{{route('invoices.show', $invoice->id)}}">{{$invoice->section->name}}</a>
+                                        </td>
+                                        <td>{{$invoice->discount}}</td>
+                                        <td>{{$invoice->rate_vat}}</td>
+                                        <td>{{$invoice->amount_commission}}</td>
+                                        <td>{{$invoice->total}}</td>
+                                        <td>
+                                            @if ($invoice->value_status == 1)
+                                                <span class="badge badge-pill badge-success">{{$invoice->status}}</span>
+                                            @elseif($invoice->value_status == 2)
+                                                <span class="badge badge-pill badge-danger">{{$invoice->status}}</span>
+                                            @else
+                                                <span class="badge badge-pill badge-warning">{{$invoice->status}}</span>
+                                            @endif
+                                        </td>
+                                        <td>{{$invoice->note}}</td>
+                                    </tr>
+                                @empty
+                                    --
+                                @endforelse
+
                                 </tbody>
                             </table>
                         </div>

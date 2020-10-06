@@ -44,7 +44,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="inputName" class="control-label">رقم الفاتورة</label>
-                                    <input type="text" class="form-control" id="inputName" name="invoice_number"
+                                    <input type="text" class="form-control" id="inputName" name="invoice_number" value="{{old('invoice_number')}}"
                                            title="يرجي ادخال رقم الفاتورة" required>
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>تاريخ الفاتورة</label>
-                                    <input class="form-control fc-datepicker" name="invoice_Date"
+                                    <input class="form-control fc-datepicker" name="invoice_date"
                                            placeholder="YYYY-MM-DD" type="text" required>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="inputName" class="control-label">القسم</label>
-                                    <select name="Section" class="form-control SlectBox"
+                                    <select name="section" class="form-control SlectBox"
                                             onclick="console.log($(this).val())"
                                             onchange="console.log('change is firing')">
                                         <!--placeholder-->
@@ -93,7 +93,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="inputName" class="control-label">مبلغ التحصيل</label>
-                                    <input type="text" class="form-control" id="inputName" name="Amount_collection"
+                                    <input type="text" class="form-control" id="inputName" name="amount_collection"
                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
                                 <div class="form-group">
                                     <label for="inputName" class="control-label">مبلغ العمولة</label>
                                     <input type="text" class="form-control form-control-lg" id="Amount_Commission"
-                                           name="Amount_Commission" title="يرجي ادخال مبلغ العمولة "
+                                           name="amount_commission" title="يرجي ادخال مبلغ العمولة "
                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                            required>
                                 </div>
@@ -229,7 +229,7 @@
 
     <script>
         $(document).ready(function () {
-            $('select[name="Section"]').on('change', function () {
+            $('select[name="section"]').on('change', function () {
                 var SectionId = $(this).val();
                 if (SectionId) {
                     $.ajax({

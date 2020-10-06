@@ -19,7 +19,22 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c58c7aa1-ac05-4dd1-8f8e-80df606e4319" name="Default Changelist" comment="" />
+    <list default="true" id="c58c7aa1-ac05-4dd1-8f8e-80df606e4319" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Requests/InvoiceRequest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/InvoiceAttachment.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/InvoiceDetails.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_03_135549_create_invoice_details_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_10_03_140637_create_invoice_attachments_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/invoices/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/InvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/InvoiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Invoice.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Invoice.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_01_153404_create_invoices_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_01_153404_create_invoices_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/invoices/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/invoices/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/invoices/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/invoices/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -151,6 +166,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/dashboard/invoices" />
@@ -187,6 +203,7 @@
       <workItem from="1601562202081" duration="27716000" />
       <workItem from="1601624664230" duration="19195000" />
       <workItem from="1601721231080" duration="3440000" />
+      <workItem from="1601920217763" duration="2882000" />
     </task>
     <servers />
   </component>
@@ -205,6 +222,9 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601637960490">
       <screen x="0" y="0" width="1366" height="738" />
@@ -218,10 +238,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="532" y="278" key="Create Controller/0.0.1366.738@0.0.1366.738" timestamp="1601629530716" />
-    <state x="543" y="278" key="Create Form Request" timestamp="1601635306120">
+    <state x="543" y="278" key="Create Form Request" timestamp="1601920804796">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="543" y="278" key="Create Form Request/0.0.1366.738@0.0.1366.738" timestamp="1601635306120" />
+    <state x="543" y="278" key="Create Form Request/0.0.1366.738@0.0.1366.738" timestamp="1601920804796" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
