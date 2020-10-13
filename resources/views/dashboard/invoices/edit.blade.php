@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/plugins/telephoneinput/telephoneinput-rtl.css') }}">
 @endsection
 @section('title')
-    اضافة فاتورة
+    تعديل فاتورة
 @stop
 
 @section('page-header')
@@ -21,7 +21,7 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">الفواتير</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                    اضافة فاتورة</span>
+                    تعديل فاتورة</span>
             </div>
         </div>
     </div>
@@ -35,17 +35,17 @@
             <div class="card">
                 <div class="card-body">
 
-                    <form action="{{route('invoices.store')}}" method="POST" enctype="multipart/form-data"
+                    <form action="{{route('invoices.update', $invoice->id)}}" method="POST" enctype="multipart/form-data"
                           autocomplete="off">
                         @csrf
-
+                        @method('PUT')
                         <div class="row">
 
                             <div class="col-md-4">
                                 <div class="form-group">
                                     @php $input = 'invoice_number' @endphp
                                     <label for="inputName" class="control-label">رقم الفاتورة</label>
-                                    <input type="text" class="form-control @error($input) is-invalid @enderror" id="inputName" name="{{$input}}" value="{{old($input)}}" title="يرجي ادخال رقم الفاتورة">
+                                    <input type="text" class="form-control @error($input) is-invalid @enderror" id="inputName" name="{{$input}}" value="{{$invoice->$input}}" title="يرجي ادخال رقم الفاتورة">
                                     @error($input)
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -58,7 +58,7 @@
                                 <div class="form-group">
                                     @php $input = 'invoice_date' @endphp
                                     <label>تاريخ الفاتورة</label>
-                                    <input class="form-control fc-datepicker @error($input) is-invalid @enderror" name="invoice_date" value="{{old($input) ?? date('Y-m-d')}}" placeholder="YYYY-MM-DD" type="text" >
+                                    <input class="form-control fc-datepicker @error($input) is-invalid @enderror" name="invoice_date" value="{{$invoice->$input}}" placeholder="YYYY-MM-DD" type="text" >
                                     @error($input)
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -71,7 +71,7 @@
                                 <div class="form-group">
                                     @php $input = 'due_date' @endphp
                                     <label>تاريخ الاستحقاق</label>
-                                    <input class="form-control fc-datepicker @error($input) is-invalid @enderror" name="due_date" value="{{old($input)}}" placeholder="YYYY-MM-DD" type="text" >
+                                    <input class="form-control fc-datepicker @error($input) is-invalid @enderror" name="due_date" value="{{$invoice->$input}}" placeholder="YYYY-MM-DD" type="text" >
                                     @error($input)
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -86,13 +86,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="inputName" class="control-label">القسم</label>
-                                    <select name="section" class="form-control SlectBox"
+                                    <select name="section_id" id="section" class="form-control SlectBox"
                                             onclick="console.log($(this).val())"
                                             onchange="console.log('change is firing')">
                                         <!--placeholder-->
                                         <option value="" selected disabled>حدد القسم</option>
                                         @foreach ($sections as $section)
-                                            <option value="{{ $section->id }}"> {{ $section->name }}</option>
+                                            <option value="{{ $section->id }}" @if($invoice->section->id == $section->id) selected @endif> {{ $section->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -102,7 +102,9 @@
                                 <div class="form-group">
                                     @php $input = 'product' @endphp
                                     <label for="inputName" class="control-label">المنتج</label>
-                                    <select id="product" name="product" class="form-control @error($input) is-invalid @enderror"></select>
+                                    <select id="product" name="product" class="form-control @error($input) is-invalid @enderror">
+                                        <option value="{{ $invoice->product }}"> {{ $invoice->product }}</option>
+                                    </select>
                                     @error($input)
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -115,7 +117,7 @@
                                 <div class="form-group">
                                     @php $input = 'amount_collection' @endphp
                                     <label for="inputName" class="control-label">مبلغ التحصيل</label>
-                                    <input type="text" class="form-control @error($input) is-invalid @enderror" value="{{old($input)}}" id="inputName" name="amount_collection" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                    <input type="text" class="form-control @error($input) is-invalid @enderror" value="{{$invoice->$input}}" id="inputName" name="amount_collection" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                     @error($input)
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -131,7 +133,7 @@
                                 <div class="form-group">
                                     @php $input = 'amount_commission' @endphp
                                     <label for="inputName" class="control-label">مبلغ العمولة</label>
-                                    <input type="text" class="form-control form-control-lg @error($input) is-invalid @enderror" value="{{old($input)}}" id="Amount_Commission" name="amount_commission" title="يرجي ادخال مبلغ العمولة " oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                    <input type="text" class="form-control form-control-lg @error($input) is-invalid @enderror" value="{{$invoice->$input}}" id="Amount_Commission" name="amount_commission" title="يرجي ادخال مبلغ العمولة " oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                     @error($input)
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -143,7 +145,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="inputName" class="control-label">الخصم</label>
-                                    <input type="text" class="form-control form-control-lg" id="discount" value="{{old('discount') ?? 0}}" name="discount" title="يرجي ادخال مبلغ الخصم " oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+                                    <input type="text" class="form-control form-control-lg" id="discount" value="{{$invoice->$input ?? 0}}" name="discount" title="يرجي ادخال مبلغ الخصم " oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                                 </div>
                             </div>
 
@@ -154,10 +156,10 @@
                                     <select name="rate_vat" id="rate_vat" class="form-control @error($input) is-invalid @enderror" onchange="myFunction()">
                                         <!--placeholder-->
                                         <option value="" selected disabled>حدد نسبة الضريبة</option>
-                                        <option value="5%">5%</option>
-                                        <option value="10%">10%</option>
-                                        <option value="15%">15%</option>
-                                        <option value="20%">20%</option>
+                                        <option value="5%"  {{$invoice->rate_vat == '5%' ? 'selected' : ''}}>5%</option>
+                                        <option value="10%" {{$invoice->rate_vat == '10%' ? 'selected' : ''}}>10%</option>
+                                        <option value="15%" {{$invoice->rate_vat == '15%' ? 'selected' : ''}}>15%</option>
+                                        <option value="20%" {{$invoice->rate_vat == '20%' ? 'selected' : ''}}>20%</option>
                                     </select>
                                     @error($input)
                                     <span class="invalid-feedback" role="alert">
@@ -166,22 +168,23 @@
                                     @enderror
                                 </div>
                             </div>
-
                         </div>
 
                         <div class="row">
 
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    @php $input = 'value_vat' @endphp
                                     <label for="inputName" class="control-label">قيمة ضريبة القيمة المضافة</label>
-                                    <input type="text" class="form-control" id="value_vat" name="value_vat" readonly>
+                                    <input type="text" class="form-control" value="{{$invoice->$input}}" id="value_vat" name="value_vat" readonly>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    @php $input = 'total' @endphp
                                     <label for="inputName" class="control-label">الاجمالي شامل الضريبة</label>
-                                    <input type="text" class="form-control" id="total" name="total" readonly>
+                                    <input type="text" class="form-control" value="{{$invoice->$input}}" id="total" name="total" readonly>
                                 </div>
                             </div>
 
@@ -190,8 +193,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
+                                    @php $input = 'note' @endphp
                                     <label for="exampleTextarea">ملاحظات</label>
-                                    <textarea class="form-control" id="exampleTextarea" name="note" rows="6"></textarea>
+                                    <textarea class="form-control" id="exampleTextarea" name="note" rows="6">{{$invoice->$input}}</textarea>
                                 </div>
                             </div>
                         </div>
@@ -202,7 +206,7 @@
                         <h5 class="card-title">المرفقات</h5>
 
                         <div class="col-sm-12 col-md-12">
-                            <input type="file" class="dropify" name="file" accept=".pdf,.jpg, .png, image/jpeg, image/png"
+                            <input type="file" class="dropify" accept=".pdf,.jpg, .png, image/jpeg, image/png"
                                    data-height="70"/>
                         </div>
                         <br>
@@ -259,7 +263,7 @@
 
     <script>
         $(document).ready(function () {
-            $('select[name="section"]').on('change', function () {
+            $('select[id="section"]').on('change', function () {
                 var SectionId = $(this).val();
                 if (SectionId) {
                     $.ajax({
@@ -286,6 +290,7 @@
 
 
     <script>
+
         function myFunction() {
 
             var Amount_Commission = parseFloat(document.getElementById("Amount_Commission").value);

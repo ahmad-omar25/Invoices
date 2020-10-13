@@ -26,17 +26,6 @@
 @section('content')
 
 
-    @if (session()->has('delete'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>{{ session()->get('delete') }}</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-
-
-
     <!-- row opened -->
     <div class="row row-sm">
 
@@ -51,8 +40,7 @@
                                     <div class="tabs-menu1">
                                         <!-- Tabs -->
                                         <ul class="nav panel-tabs main-nav-line">
-                                            <li><a href="#tab4" class="nav-link active" data-toggle="tab">معلومات
-                                                    الفاتورة</a></li>
+                                            <li><a href="#tab4" class="nav-link active" data-toggle="tab">معلومات الفاتورة</a></li>
                                             <li><a href="#tab5" class="nav-link" data-toggle="tab">حالات الدفع</a></li>
                                             <li><a href="#tab6" class="nav-link" data-toggle="tab">المرفقات</a></li>
                                         </ul>
@@ -173,28 +161,92 @@
 
 
                                         <div class="tab-pane" id="tab6">
-                                            <div class="table-responsive mt-15">
-                                                <table class="table center-aligned-table mb-0 table table-hover"
-                                                       style="text-align:center">
-                                                    <thead>
-                                                    <tr class="text-dark">
-                                                        <th scope="col">م</th>
-                                                        <th scope="col">اسم الملف</th>
-                                                        <th scope="col">قام بالاضافة</th>
-                                                        <th scope="col">تاريخ الاضافة</th>
-                                                        <th scope="col">العمليات</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
+                                            <!--المرفقات-->
+                                            <div class="card card-statistics">
+                                                <div class="card-body">
+                                                    <p class="text-danger">* صيغة المرفق pdf, jpeg ,.jpg , png </p>
+                                                    <h5 class="card-title">اضافة مرفقات</h5>
+                                                    <form method="post" action="{{ url('/InvoiceAttachments') }}"
+                                                          enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="customFile"
+                                                                   name="file_name" required>
+                                                            <input type="hidden" id="customFile" name="invoice_number"
+                                                                   value="{{ $invoice->invoice_number }}">
+                                                            <input type="hidden" id="invoice_id" name="invoice_id"
+                                                                   value="{{ $invoice->id }}">
+                                                            <label class="custom-file-label" for="customFile">حدد
+                                                                المرفق</label>
+                                                        </div><br><br>
+                                                        <button type="submit" class="btn btn-primary btn-sm "
+                                                                name="uploadedFile">تاكيد</button>
+                                                    </form>
+                                                </div>
+                                                <br>
 
-                                                    </tbody>
-                                                    </tbody>
-                                                </table>
+                                                <div class="table-responsive mt-15">
+                                                    <table class="table center-aligned-table mb-0 table table-hover"
+                                                           style="text-align:center">
+                                                        <thead>
+                                                        <tr class="text-dark">
+                                                            <th scope="col">م</th>
+                                                            <th scope="col">اسم الملف</th>
+                                                            <th scope="col">قام بالاضافة</th>
+                                                            <th scope="col">تاريخ الاضافة</th>
+                                                            <th scope="col">العمليات</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
 
+                                                        @foreach ($attachments as $index=>$attachment)
+                                                            <tr>
+                                                                <td>{{ $index + 1 }}</td>
+                                                                <td>{{ $attachment->file_name }}</td>
+                                                                <td>{{ $attachment->created_by }}</td>
+                                                                <td>{{ $attachment->created_at->format('Y-d-m') }}</td>
+                                                                <td colspan="2">
+
+                                                                    <a class="btn btn-outline-success btn-sm"
+                                                                       href="{{ url('View_file') }}/{{ $invoice->invoice_number }}/{{ $attachment->file_name }}"
+                                                                       role="button"><i class="fas fa-eye"></i>&nbsp;
+                                                                        عرض</a>
+
+                                                                    <a class="btn btn-outline-info btn-sm"
+                                                                       href="{{ url('download') }}/{{ $invoice->invoice_number }}/{{ $attachment->file_name }}"
+                                                                       role="button"><i
+                                                                            class="fas fa-download"></i>&nbsp;
+                                                                        تحميل</a>
+
+                                                                    <button class="btn btn-outline-danger btn-sm"
+                                                                            data-toggle="modal"
+                                                                            data-file_name="{{ $attachment->file_name }}"
+                                                                            data-invoice_number="{{ $attachment->invoice_number }}"
+                                                                            data-id_file="{{ $attachment->id }}"
+                                                                            data-target="#delete_file">حذف</button>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
                                             </div>
+
                                         </div>
 
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /div -->
+        </div>
+
+    </div>
+    <!-- /row -->
                                 </div>
                             </div>
                         </div>

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Dashboard\Invoice;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\InvoiceRequest;
 use App\Models\Invoice;
+use App\Models\InvoiceAttachment;
 use App\Models\InvoiceDetails;
 use App\Models\Product;
 use App\Models\Section;
@@ -66,14 +67,62 @@ class InvoiceController extends Controller
             'payment_date' => '2020-10-10',
         ]);
 
+        if ($request->hasFile('file')) {
+
+            $invoiceId = Invoice::latest()->first()->id;
+            $image = $request->file('file');
+            $file_name = $image->getClientOriginalName();
+            $invoice_number = $request->input('invoice_number');
+
+            $attachments = new InvoiceAttachment();
+            $attachments->file_name = $file_name;
+            $attachments->invoice_number = $invoice_number;
+            $attachments->created_by = auth()->user()->name;
+            $attachments->invoice_id = $invoiceId;
+            $attachments->save();
+
+            // move file
+            $imageName = $request->file->getClientOriginalName();
+            $request->file->move(public_path('Attachments/' . $invoice_number), $imageName);
+        }
+
+
         toast('تم الاضافة بنجاح', 'success');
         return redirect()->route('invoices.index');
+    }
+
+    public function show($id)
+    {
+        $invoice = Invoice::findOrFail($id);
+        $details = InvoiceDetails::where('invoice_id', $id)->get();
+        $attachments = InvoiceAttachment::where('invoice_id', $id)->get();
+        return view('dashboard.invoices.show', compact('invoice', 'details', 'attachments'));
     }
 
     public function edit($id)
     {
         $invoice = Invoice::findOrFail($id)->first();
-        $details = InvoiceDetails::where('invoice_id', $id)->get();
-        return view('dashboard.invoices.show', compact('invoice', 'details'));
+        $sections = Section::select('id', 'name')->get();
+        return view('dashboard.invoices.edit', compact('invoice', 'sections'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $invoice = Invoice::findOrFail($id);
+        $details = InvoiceDetails::create([
+            'invoice_id' => 4,
+            'invoice_number' => $request->input('invoice_number'),
+            'product' => $request->input('product'),
+            'section_id' => $request->input('section_id'),
+            'status' => 'مدفوعة',
+            'value_status' => '1',
+            'note' => $request->input('note'),
+            'created_by' => auth()->user()->name,
+            'payment_date' => '2020-10-10',
+        ]);
+
+        $invoice->update($request->except('_token'));
+        toast('تم التعديل بنجاح', 'success');
+        return redirect()->route('invoices.index');
     }
 }

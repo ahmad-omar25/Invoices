@@ -20,16 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c58c7aa1-ac05-4dd1-8f8e-80df606e4319" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/Attachments/1010/92869681_274373030232437_5778868476609298432_n.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Attachments/2020/Ahmed Omar - PHP DEVELOPER.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/Attachments/2020202/Ahmed Omar - PHP DEVELOPER.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/invoices/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/InvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/InvoiceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/InvoiceRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/InvoiceRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/InvoiceDetails.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/InvoiceDetails.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_01_153404_create_invoices_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_01_153404_create_invoices_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_10_03_135549_create_invoice_details_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_10_03_135549_create_invoice_details_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/InvoiceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/Invoice/InvoiceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/InvoiceAttachment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/InvoiceAttachment.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/invoices/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/invoices/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/invoices/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/invoices/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/invoices/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/invoices/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/main-sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/main-sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,6 +171,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\Invoices\app\Http\Controllers\Dashboard\Invoice" />
       <recent name="C:\wamp64\www\Invoices\app\Http\Requests\Dashboard" />
       <recent name="C:\wamp64\www\Invoices\app\Http\Controllers\Dashboard" />
       <recent name="C:\wamp64\www\Invoices\app\Models" />
@@ -200,6 +202,11 @@
       <workItem from="1601624664230" duration="19195000" />
       <workItem from="1601721231080" duration="3440000" />
       <workItem from="1601920217763" duration="2882000" />
+      <workItem from="1602062674543" duration="268000" />
+      <workItem from="1602063112570" duration="4450000" />
+      <workItem from="1602096448978" duration="8871000" />
+      <workItem from="1602503569938" duration="5211000" />
+      <workItem from="1602589522658" duration="935000" />
     </task>
     <servers />
   </component>
@@ -222,6 +229,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="363" y="105" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1602062897507">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="363" y="105" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.738@0.0.1366.738" timestamp="1602062897507" />
     <state x="413" y="124" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1601637960490">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

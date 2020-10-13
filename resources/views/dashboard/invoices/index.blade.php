@@ -52,6 +52,7 @@
                                     <th class="border-bottom-0">الاجمالي</th>
                                     <th class="border-bottom-0">الحالة</th>
                                     <th class="border-bottom-0">ملاحظات</th>
+                                    <th class="border-bottom-0">العمليات</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -63,7 +64,7 @@
                                         <td>{{$invoice->due_date}}</td>
                                         <td>{{$invoice->product}}</td>
                                         <td>
-                                            <a href="{{route('invoices.edit', $invoice->id)}}">{{$invoice->section->name}}</a>
+                                            <a href="{{route('invoices.show', $invoice->id)}}">{{$invoice->section->name}}</a>
                                         </td>
                                         <td>{{$invoice->discount}}</td>
                                         <td>{{$invoice->rate_vat}}</td>
@@ -78,7 +79,19 @@
                                                 <span class="badge badge-pill badge-warning">{{$invoice->status}}</span>
                                             @endif
                                         </td>
-                                        <td>{{$invoice->note ?? '--'}}</td>
+                                        <td>{!! \Illuminate\Support\Str::limit($invoice->note, 9, ' ....' ?? '--') !!}</td>
+                                        <td>
+                                            <div class="dropdown">
+                                                <button aria-expanded="false" aria-haspopup="true"
+                                                        class="btn ripple btn-primary btn-sm" data-toggle="dropdown"
+                                                        type="button">العمليات<i class="fas fa-caret-down ml-1"></i></button>
+                                                <div class="dropdown-menu tx-13">
+                                                    <a class="dropdown-item"
+                                                       href=" {{ route('invoices.edit', $invoice->id) }}">تعديل
+                                                        الفاتورة</a>
+                                                </div>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @empty
                                     --

@@ -19,14 +19,23 @@ Route::group(['namespace' => 'Dashboard', 'middleware' => 'auth'], function () {
     // Sections Routes
     Route::resource('sections', 'SectionController');
 
-    // Get Section of Products
-    Route::get('/section/{id}', 'InvoiceController@getProducts');
-
     // Products Routes
     Route::resource('products', 'ProductController');
 
-    // invoices Routes
-    Route::resource('invoices', 'InvoiceController');
+
+    /* ---------- Start invoices Routes ---------- */
+
+    Route::resource('invoices', 'Invoice\InvoiceController');
+
+    // invoices Details
+    Route::resource('invoice/details', 'Invoice\InvoiceDetails');
+
+    // Get Section of Products
+    Route::get('/section/{id}', 'Invoice\InvoiceController@getProducts');
+
+    /* ---------- End invoices Routes ---------- */
+
+
 
     // Pages
     Route::get('/{page}', 'AdminController@index');
